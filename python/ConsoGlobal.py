@@ -1,6 +1,10 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy.stats import probplot
+from statsmodels.iolib import summary
+
 
 def gini(x):
     total = 0
@@ -39,7 +43,10 @@ with open("../PowerConsoGlobal.md", "w", encoding="utf-8") as f:
 
 #print(results)
 
-# Version plus directe
+###############################################
+# HISTOGRAM CONSO GLOBAL
+###############################################
+
 monthly_by_year = data.groupby([data['Date'].dt.year, data['Date'].dt.month])['Conso'].mean().unstack(level=0)
 monthly_by_year = monthly_by_year.reindex(range(1, 13))  # Force tous les mois
 
@@ -58,4 +65,82 @@ plt.savefig('../images/ConsoGlobal.png', dpi=300, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
 #plt.show()
 
+###############################################
+# HISTOGRAM CONSO GLOBAL SKEWNESS
+###############################################
 
+plt.figure(figsize=(8, 5))
+sns.histplot(data['Conso'], kde=True, bins=30, color='skyblue')
+plt.title(f'Histogram Skewness')
+plt.xlabel('Conso')
+plt.ylabel('Frequency')
+plt.grid(False)
+plt.savefig('../images/ConsoGlobalSkewness.png', dpi=300, bbox_inches='tight',
+                facecolor='white', edgecolor='none')
+#plt.show()
+
+###############################################
+# COURBE CONSO GLOBAL kurtosis
+###############################################
+
+# Q-Q plot to check normality
+plt.figure(figsize=(6, 6))
+probplot(data['Conso'], dist="norm", plot=plt)
+plt.title('Q-Q Plot')
+plt.grid(True)
+plt.savefig('../images/ConsoGlobalKurtosis.png', dpi=300, bbox_inches='tight',
+                facecolor='white', edgecolor='none')
+#plt.show()
+
+###############################################
+# BAR CONSO GLOBAL SKEWNESS/kurtosis
+###############################################
+
+#plt.show()
+
+##############################################
+# COURBE CONSO GLOBAL LORENZ
+###############################################
+
+Consommation = data['Conso'].values
+n = len(Consommation)
+lorenz = np.cumsum(np.sort(Consommation)) / Consommation.sum()
+lorenz = np.append([0],lorenz) # La courbe de Lorenz commence à 0
+xaxis = np.linspace(0-1/n,1+1/n,n+1)
+blue = "#0065D1"  # Lighter blue for the Lorenz curve
+orange = "#FF5A1F"  # Bright orange for the line of perfect equality
+
+plt.figure(figsize=(8, 6))
+# Add a title to explain what the graph represents
+plt.title("Lorenz Curve of Consomation", fontsize=16, color="black", pad=15)
+
+plt.plot([0, 1], [0, 1], label="Line of Perfect Equality", color=orange, linewidth=2)
+plt.plot(xaxis,lorenz,drawstyle='steps-post',label="Lorenz Curve",color=blue,)
+
+# Label the x-axis to show what the horizontal axis represents
+plt.xlabel("X", fontsize=12, color="black", labelpad=10)
+# Label the y-axis to show what the vertical axis represents
+plt.ylabel("Y", fontsize=12, color="black", labelpad=10)
+
+# Add a legend to explain the two lines
+plt.legend(fontsize=12, loc="lower right", frameon=False)
+
+plt.grid(False)
+plt.gca().set_facecolor("white")
+plt.savefig('../images/ConsoGlobalLorenz.png', dpi=300, bbox_inches='tight',
+                facecolor='white', edgecolor='none')
+#plt.show()
+
+###############################################
+# BOXPLOT CONSO GLOBAL
+###############################################
+
+# Plot box plot
+plt.figure(figsize=(8, 4))
+sns.boxplot(x=data['Conso'], color='lightgreen')
+plt.title('Box Plot')
+plt.xlabel('Conso')
+plt.grid(True)
+plt.savefig('../images/ConsoGlobalBoxPlot.png', dpi=300, bbox_inches='tight',
+                facecolor='white', edgecolor='none')
+#plt.show()

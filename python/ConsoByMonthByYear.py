@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 def gini(x):
     total = 0
@@ -78,18 +79,3 @@ for year,subset in data.groupby(data['Date'].dt.year):
                 facecolor='white', edgecolor='none')
     #plt.show()
 
-'''
-print("######### Conso Total Stats #########")
-print("mode:",data['Conso'].mode())
-print("mean:",data['Conso'].mean().round())
-print("median:",data['Conso'].median())
-print("min:",data['Conso'].min())
-print("max:",data['Conso'].max())
-print("Variance sample:",data['Conso'].var(ddof=1))
-print("Variance population:",data['Conso'].var(ddof=0))
-print("Ecart Type sample:",data['Conso'].std(ddof=1))
-print("Ecart Type population:",data['Conso'].std(ddof=0))
-print("Coeff de variation:",data['Conso'].std()/data['Conso'].mean()*100)
-print("Skewness:",data['Conso'].skew())
-print("Kurtosis:",data['Conso'].kurtosis())
-'''
