@@ -3,6 +3,17 @@ layout: default
 title: Accueil
 ---
 
+<p>Statistiques</p>
+
+**[Data Conso Global](PowerConsoGlobal.md)**
+
+- First item
+- Second item
+- Third item
+- Fourth item
+
+---
+
 ![image](images/ConsoGlobal.png)
 ![image](images/ConsoGlobalLorenz.png)
 ![image](images/ConsoByMonthByYear2022.png)
@@ -15,5 +26,4 @@ title: Accueil
 ## 📊 Données dynamiques
 
 <p id="message">Chargement des données...</p>
-
 <script src="js/main.js"></script>

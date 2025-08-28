@@ -34,6 +34,8 @@ results = {
 
 
 with open("../PowerConsoGlobal.md", "w", encoding="utf-8") as f:
+    f.write("**[Index](Index.md)**\n")
+
     for key, value in results.items():
         f.write(f"- **{key}** : {value}\n")
 
@@ -59,6 +61,6 @@ plt.legend(title='Année')
 plt.tight_layout()
 plt.savefig('../images/ConsoGlobal.png', dpi=300, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
-plt.show()
+#plt.show()
 
 
