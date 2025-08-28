@@ -3,8 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import datetime
 
-data = pd.read_csv('data/Conso-ByDay.csv')
-datatemp = pd.read_csv('data/TempChamberyByMonth.csv')
+data = pd.read_csv('csv/Conso-ByDay.csv')
+datatemp = pd.read_csv('csv/TempChamberyByMonth.csv')
 #print(data.head())
 #print(datatemp.head())
 

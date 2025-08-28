@@ -6,7 +6,7 @@ import datetime
 #print(datetime.date.today().day)
 #print(datetime.date.today().month)
 
-data = pd.read_csv('data/Conso-ByDay.csv')
+data = pd.read_csv('csv/Conso-ByDay.csv')
 #print(data.head())
 
 #print(data.dtypes)

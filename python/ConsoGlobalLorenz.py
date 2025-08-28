@@ -8,7 +8,7 @@ def gini(x):
         total += np.sum(np.abs(xi - x[i:]))
     return total / (len(x)**2 * np.mean(x))
 
-data = pd.read_csv('data/Conso-ByDay.csv')
+data = pd.read_csv('csv/Conso-ByDay.csv')
 #print(data.head())
 
 #print(data.dtypes)
