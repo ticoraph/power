@@ -8,28 +8,12 @@ def gini(x):
         total += np.sum(np.abs(xi - x[i:]))
     return total / (len(x)**2 * np.mean(x))
 
-data = pd.read_csv('csv/Conso-ByDay.csv')
+data = pd.read_csv('../csv/Conso-ByDay.csv')
 #print(data.head())
 
 #print(data.dtypes)
 data['Date'] = pd.to_datetime(data['Date'],dayfirst=True)
 #print(data.dtypes)
-
-print("######### Conso Total Stats #########")
-print("mode:",data['Conso'].mode())
-print("mean:",data['Conso'].mean().round())
-print("median:",data['Conso'].median())
-print("min:",data['Conso'].min())
-print("max:",data['Conso'].max())
-print("Variance sample:",data['Conso'].var(ddof=1))
-print("Variance population:",data['Conso'].var(ddof=0))
-print("Ecart Type sample:",data['Conso'].std(ddof=1))
-print("Ecart Type population:",data['Conso'].std(ddof=0))
-print("Coeff de variation:",data['Conso'].std()/data['Conso'].mean()*100)
-print("Skewness:",data['Conso'].skew())
-print("Kurtosis:",data['Conso'].kurtosis())
-print("GINI:",gini(data['Conso']))
-
 
 Consommation = data['Conso'].values
 n = len(Consommation)
@@ -56,7 +40,7 @@ plt.legend(fontsize=12, loc="lower right", frameon=False)
 
 plt.grid(False)
 plt.gca().set_facecolor("white")
-plt.savefig('images/ConsoGlobalLorenz.png', dpi=300, bbox_inches='tight',
+plt.savefig('../images/ConsoGlobalLorenz.png', dpi=300, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
 plt.show()
 

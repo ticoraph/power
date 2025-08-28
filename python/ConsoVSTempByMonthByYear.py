@@ -3,8 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import datetime
 
-data = pd.read_csv('csv/Conso-ByDay.csv')
-datatemp = pd.read_csv('csv/TempChamberyByMonth.csv')
+data = pd.read_csv('../csv/Conso-ByDay.csv')
+datatemp = pd.read_csv('../csv/TempChamberyByMonth.csv')
 #print(data.head())
 #print(datatemp.head())
 
@@ -67,7 +67,7 @@ for year,subset in datamerge.groupby(datamerge['DateMonth'].dt.year) :
 
     plt.legend()
     plt.tight_layout()
-    plt.savefig(f'images/ConsoByMonthByYear{year}.png', dpi=300, bbox_inches='tight',
+    plt.savefig(f'../images/ConsoVSTempByMonthByYear{year}.png', dpi=300, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
     plt.show()
 

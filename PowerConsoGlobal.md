@@ -1,4 +1,4 @@
-**[Index](Index.md)**
+**[Index](index.md)**
 - **Nombres de valeurs (Conso kW par jour)** : 1095
 - **mode (Conso la plus frequente)** : 16
 - **nombre mode** : 1

@@ -32,17 +32,12 @@ results = {
 "GINI (dispersion ou inegalite - 0 a 1)"     : gini(data['Conso']).round(2)
 }
 
-
 with open("../PowerConsoGlobal.md", "w", encoding="utf-8") as f:
     f.write("**[Index](Index.md)**\n")
-
     for key, value in results.items():
         f.write(f"- **{key}** : {value}\n")
 
-print(results)
-
-#data.boxplot(column="Conso", vert=False)
-#plt.show()
+#print(results)
 
 # Version plus directe
 monthly_by_year = data.groupby([data['Date'].dt.year, data['Date'].dt.month])['Conso'].mean().unstack(level=0)
