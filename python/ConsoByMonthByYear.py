@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+from scipy.stats import probplot
 
 def gini(x):
     total = 0
@@ -57,9 +58,9 @@ for year,subset in data.groupby(data['Date'].dt.year):
 
     plt.figure(figsize=(12, 6))
     monthly_data.plot(kind='bar')
-    plt.title(f'Consommation moyenne par mois - {year}')
-    plt.xlabel('Mois')
-    plt.ylabel('Consommation moyenne')
+    plt.title(f'Home Energy Consumption (kW) {year}')
+    plt.xlabel('Month')
+    plt.ylabel('Average Consumption (kW)')
 
     mean_subset = subset['Conso'].mean()
     median_subset = subset['Conso'].median()
@@ -78,4 +79,53 @@ for year,subset in data.groupby(data['Date'].dt.year):
     plt.savefig(f'../images/ConsoByMonthByYear{year}.png', dpi=300, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
     #plt.show()
+
+    ###############################################
+    # HISTOGRAM CONSO SKEWNESS
+    ###############################################
+
+    plt.figure(figsize=(8, 5))
+    sns.histplot(subset['Conso'], kde=True, bins=30, color='skyblue')
+    plt.title(f'Home Energy Consumption Skewness {year}')
+    plt.suptitle('Values smaller or larger than the average')
+    plt.xlabel('Consumption')
+    plt.ylabel('Frequency')
+    plt.grid(False)
+    plt.savefig(f'../images/ConsoSkewness{year}.png', dpi=300, bbox_inches='tight',
+            facecolor='white', edgecolor='none')
+
+    ###############################################
+    # COURBE CONSO  kurtosis
+    ###############################################
+
+    # Q-Q plot to check normality
+    plt.figure(figsize=(6, 6))
+    probplot(subset['Conso'], dist="norm", plot=plt)
+    plt.title(f'Home Energy Consumption Kurtosis {year}')
+    plt.suptitle('Scattered values or many extreme values')
+    plt.xlabel('Conso')
+    plt.ylabel('Frequency')
+    plt.grid(True)
+    plt.savefig(f'../images/ConsoKurtosis{year}.png', dpi=300, bbox_inches='tight',
+                facecolor='white', edgecolor='none')
+
+    ###############################################
+    # BOXPLOT CONSO
+    ###############################################
+
+    # Plot box plot
+    plt.figure(figsize=(8, 4))
+    sns.boxplot(x=subset['Conso'], color='lightgreen')
+    plt.title(f"Home Energy Consumption BoxPlot {year}")
+    plt.suptitle('Distribution of a dataset')
+    plt.xlabel('Consumption')
+    plt.grid(True)
+    plt.savefig(f'../images/ConsoBoxPlot{year}.png', dpi=300, bbox_inches='tight',
+                facecolor='white', edgecolor='none')
+
+    with open("../ConsoByMonthByYear.md", "a", encoding="utf-8") as f:
+
+        f.write(f"![image](images/ConsoSkewness{year}.png)\n\n")
+        f.write(f"![image](images/ConsoKurtosis{year}.png)\n\n")
+        f.write(f"![image](images/ConsoBoxPlot{year}.png)\n\n")
 

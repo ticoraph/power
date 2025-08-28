@@ -37,7 +37,7 @@ results = {
 }
 
 with open("../PowerConsoGlobal.md", "w", encoding="utf-8") as f:
-    f.write("**[Index](Index.md)**\n")
+    f.write("**[Index](index.md)**\n")
     for key, value in results.items():
         f.write(f"- **{key}** : {value}\n")
 
@@ -52,14 +52,14 @@ monthly_by_year = monthly_by_year.reindex(range(1, 13))  # Force tous les mois
 
 plt.figure(figsize=(20, 8))
 monthly_by_year.plot(kind='bar', width=0.8)
-plt.title('Consommation moyenne par mois - Toutes les années')
-plt.xlabel('Mois')
-plt.ylabel('Consommation moyenne')
+plt.title('Home Energy Consumption (kW)')
+plt.xlabel('Month')
+plt.ylabel('Consumption Mean (kW)')
 
 month_names = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun',
                'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc']
 plt.xticks(range(12), month_names, rotation=45)
-plt.legend(title='Année')
+plt.legend(title='Year')
 plt.tight_layout()
 plt.savefig('../images/ConsoGlobal.png', dpi=300, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
@@ -71,8 +71,9 @@ plt.savefig('../images/ConsoGlobal.png', dpi=300, bbox_inches='tight',
 
 plt.figure(figsize=(8, 5))
 sns.histplot(data['Conso'], kde=True, bins=30, color='skyblue')
-plt.title(f'Histogram Skewness')
-plt.xlabel('Conso')
+plt.title('Home Energy Consumption Skewness')
+plt.suptitle('Values smaller or larger than the average')
+plt.xlabel('Consumption')
 plt.ylabel('Frequency')
 plt.grid(False)
 plt.savefig('../images/ConsoGlobalSkewness.png', dpi=300, bbox_inches='tight',
@@ -86,16 +87,13 @@ plt.savefig('../images/ConsoGlobalSkewness.png', dpi=300, bbox_inches='tight',
 # Q-Q plot to check normality
 plt.figure(figsize=(6, 6))
 probplot(data['Conso'], dist="norm", plot=plt)
-plt.title('Q-Q Plot')
+plt.title('Home Energy Consumption Kurtosis')
+plt.suptitle('Scattered values or many extreme values')
+plt.xlabel('Kurtosis')
+plt.ylabel('Consumption')
 plt.grid(True)
 plt.savefig('../images/ConsoGlobalKurtosis.png', dpi=300, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
-#plt.show()
-
-###############################################
-# BAR CONSO GLOBAL SKEWNESS/kurtosis
-###############################################
-
 #plt.show()
 
 ##############################################
@@ -111,8 +109,8 @@ blue = "#0065D1"  # Lighter blue for the Lorenz curve
 orange = "#FF5A1F"  # Bright orange for the line of perfect equality
 
 plt.figure(figsize=(8, 6))
-# Add a title to explain what the graph represents
-plt.title("Lorenz Curve of Consomation", fontsize=16, color="black", pad=15)
+plt.title("Home Energy Consumption Lorenz")
+plt.suptitle('Values with inequalities')
 
 plt.plot([0, 1], [0, 1], label="Line of Perfect Equality", color=orange, linewidth=2)
 plt.plot(xaxis,lorenz,drawstyle='steps-post',label="Lorenz Curve",color=blue,)
@@ -138,8 +136,9 @@ plt.savefig('../images/ConsoGlobalLorenz.png', dpi=300, bbox_inches='tight',
 # Plot box plot
 plt.figure(figsize=(8, 4))
 sns.boxplot(x=data['Conso'], color='lightgreen')
-plt.title('Box Plot')
-plt.xlabel('Conso')
+plt.title("Home Energy Consumption BoxPlot")
+plt.suptitle('Distribution of a dataset')
+plt.xlabel('Consumption')
 plt.grid(True)
 plt.savefig('../images/ConsoGlobalBoxPlot.png', dpi=300, bbox_inches='tight',
                 facecolor='white', edgecolor='none')

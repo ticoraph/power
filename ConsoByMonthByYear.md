@@ -27,6 +27,12 @@
 
 ##############################################
 
+![image](images/ConsoSkewness2022.png)
+
+![image](images/ConsoKurtosis2022.png)
+
+![image](images/ConsoBoxPlot2022.png)
+
 - **ANNEE** : 2023
 - **Nombres de valeurs (Conso kW par jour)** : 365
 - **mode (Conso la plus frequente)** : 15
@@ -46,6 +52,12 @@
 
 
 ##############################################
+
+![image](images/ConsoSkewness2023.png)
+
+![image](images/ConsoKurtosis2023.png)
+
+![image](images/ConsoBoxPlot2023.png)
 
 - **ANNEE** : 2024
 - **Nombres de valeurs (Conso kW par jour)** : 366
@@ -67,6 +79,12 @@
 
 ##############################################
 
+![image](images/ConsoSkewness2024.png)
+
+![image](images/ConsoKurtosis2024.png)
+
+![image](images/ConsoBoxPlot2024.png)
+
 - **ANNEE** : 2025
 - **Nombres de valeurs (Conso kW par jour)** : 238
 - **mode (Conso la plus frequente)** : 17
@@ -86,4 +104,10 @@
 
 
 ##############################################
+
+![image](images/ConsoSkewness2025.png)
+
+![image](images/ConsoKurtosis2025.png)
+
+![image](images/ConsoBoxPlot2025.png)
 

@@ -1,4 +1,4 @@
-**[Index](Index.md)**
+**[Index](index.md)**
 
 ![image](images/ConsoGlobal.png)
 ![image](images/ConsoGlobalLorenz.png)
