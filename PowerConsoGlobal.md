@@ -1,0 +1,15 @@
+- **Nombres de valeurs (Conso kW par jour)** : 1095
+- **mode (Conso la plus frequente)** : 16
+- **nombre mode** : 1
+- **mean (Conso Moyenne)** : 24.56
+- **median (Conso Mediane)** : 21.0
+- **Conso Min** : 2
+- **Conso Max** : 86
+- **Variance sample** : 206.19
+- **Variance population (Valeurs dispersees autour de la moyenne)** : 206.0
+- **Ecart Type sample** : 14.36
+- **Ecart Type population (les valeurs s’ecartent d’environ x unités de la moyenne)** : 14.35
+- **Coeff de variation** : 58.47
+- **Skewness (symetrie d’une distribution autour de sa moyenne)** : 1.2
+- **Kurtosis** : 1.64
+- **GINI (dispersion ou inegalite - 0 a 1)** : 0.31
