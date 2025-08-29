@@ -66,6 +66,21 @@ plt.savefig('../images/ConsoGlobal.png', dpi=300, bbox_inches='tight',
 #plt.show()
 
 ###############################################
+# SCATTER CONSO GLOBAL
+###############################################
+
+plt.figure(figsize=(12, 6))
+plt.scatter(data['Date'],data['Conso'])
+plt.title('Home Energy Consumption (kW)')
+plt.xlabel('Month')
+plt.ylabel('Consumption Mean (kW)')
+plt.legend(title='Year')
+plt.tight_layout()
+plt.savefig('../images/ConsoGlobalscatter.png', dpi=300, bbox_inches='tight',
+                facecolor='white', edgecolor='none')
+#plt.show()
+
+###############################################
 # HISTOGRAM CONSO GLOBAL SKEWNESS
 ###############################################
 
